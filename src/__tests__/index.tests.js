@@ -1,13 +1,23 @@
 import NotACreativeColor from "./NotACreativeColor";
 
-const { add, returnObject, toMatchObject, toThrowError, lessThan10Truthy } = require('./functions');
+const { add,
+        returnObject,
+        toMatchObject,
+        toThrowError,
+        lessThan10Truthy,
+        returnString,
+        returnArrayAnimals
+    } = require('./functions');
 
 test('Add two numbers', () => {
+    // ARRANGE
     const num1 = 5;
     const num2 = 5;
 
+    // ACT
     const result = add(num1, num2);
 
+    // ASSERT
     expect(result).toBe(10);
 });
 
@@ -67,8 +77,33 @@ test('Less than 10 truthy test', async () => {
     const a = 5;
     const b = 4;
 
-    await expect(() => {
+    // ASSERT
+    expect(() => {
         lessThan10Truthy(a, b);
     }).toBeTruthy();
+});
+
+test('Use a Match on a String', () => {
+    // ARRANGE & ACT
+    const result = returnString;
+
+    // ASSERT
+    expect(result.toString()).toMatch(/This/);
+    expect(result.toString()).not.toMatch(/That/);
+});
+
+test('Use the contain method on an array', () => {
+    // ARRANGE & ACT
+    const result = returnArrayAnimals();
+
+    // ASSERT
+    expect(result).toContain('cats');
+    expect(result).not.toContain('fish');
+});
+
+test('Async test', () => {
+    // ARRANGE
+
+    // ASSERT
 });
 

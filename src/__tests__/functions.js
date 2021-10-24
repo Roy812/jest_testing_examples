@@ -1,4 +1,5 @@
 import NotACreativeColor from "./NotACreativeColor";
+import axios from "axios";
 
 function add(a, b) {
     return a + b;
@@ -40,10 +41,32 @@ function lessThan10Truthy(a, b) {
     return false;
 }
 
+function returnString() {
+    return 'This String is returned';
+}
+
+function returnArrayAnimals() {
+    const animals = [
+        'cats',
+        'dogs',
+        'birds',
+        'frogs'
+    ]
+    return animals;
+}
+
+async function fetchData() {
+    const result = await axios.get('https://api.publicapis.org/entries');
+    const count = result.data.count;
+    return count;
+}
+
 module.exports = {
     add: add,
     returnObject: returnObject,
     toMatchObject: toMatchObject,
     toThrowError: toThrowError,
-    lessThan10Truthy: lessThan10Truthy
+    lessThan10Truthy: lessThan10Truthy,
+    returnString: returnString,
+    returnArrayAnimals: returnArrayAnimals,
 }
